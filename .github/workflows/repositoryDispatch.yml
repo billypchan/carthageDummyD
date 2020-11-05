@@ -1,6 +1,8 @@
 name: Remote Dispatch Action Responder
 
 on: [repository_dispatch]
+  push:
+    branches: [ master ]
 
 jobs:
   create-bump-pr:
@@ -18,7 +20,7 @@ jobs:
         if: github.event.action == 'ping'
         run: |
           sed -i '' 's/\(github "billypchan\/carthageDummyE" ~> \)\(.*\)$/\12.0/g' ./Cartfile
-          cat carthageDummyD/Cartfile
+          cat Cartfile
           git branch chore/bump
           git checkout chore/bump
           git add .
