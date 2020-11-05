@@ -31,7 +31,7 @@ jobs:
           git commit -m"bump E"
           git status
           git log
-          git push
+          git push --set-upstream origin chore/bump
 
       - name: open PR
         run: |
