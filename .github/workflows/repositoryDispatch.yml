@@ -35,3 +35,4 @@ jobs:
 
       - name: open PR
         run: |
+          gh pr create --title "chore: bu,p" --body "bump for E"
