@@ -1,0 +1,17 @@
+name: Remote Dispatch Action Responder
+
+on: [repository_dispatch]
+
+jobs:
+  create-bump-pr:
+    runs-on: macos-10.15
+
+    steps:
+      - name: Event Information
+        run: |
+          echo "Event '${{ github.event.action }}' received from '${{ github.event.client_payload.repository }}'"
+
+      - name: create bump PR
+        if: github.event.action == 'ping'
+        run: |
+          echo ""
