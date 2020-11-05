@@ -20,11 +20,15 @@ jobs:
 
       - name: create bump PR
         run: |
-          sed -i '' 's/\(github "billypchan\/carthageDummyE" ~> \)\(.*\)$/\12.0/g' ./Cartfile
-          cat Cartfile
           git branch chore/bump
           git checkout chore/bump
+          echo "before update"
+          cat Cartfile
+          sed -i '' 's/\(github "billypchan\/carthageDummyE" ~> \)\(.*\)$/\12.0/g' Cartfile
+          echo "after update"
+          cat Cartfile
           git add .
           git commit -m"bump E"
+          git status
           git log
           git push
