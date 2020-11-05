@@ -12,6 +12,14 @@ jobs:
           echo "Event '${{ github.event.action }}' received from '${{ github.event.client_payload.repository }}'"
 
       - name: create bump PR
+        uses: actions/checkout@v2
         if: github.event.action == 'ping'
         run: |
-          echo ""
+          sed -i '' 's/\(github "billypchan\/carthageDummyE" ~> \)\(.*\)$/\12.0/g' ./Cartfile
+          cat carthageDummyD/Cartfile
+          git branch chore/bump
+          git checkout chore/bump
+          git add .
+          git commit -m"bump E"
+          git log
+          git push
