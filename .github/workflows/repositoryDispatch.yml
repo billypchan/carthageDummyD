@@ -29,8 +29,8 @@ jobs:
           cat Cartfile
           git add .
           git commit -m"bump E"
-          git status
-          git log
+#          git status
+#          git log
           git push --set-upstream origin chore/bump
 
       - name: open PR
