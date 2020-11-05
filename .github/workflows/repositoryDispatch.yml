@@ -27,6 +27,7 @@ jobs:
           sed -i '' 's/\(github "billypchan\/carthageDummyE" ~> \)\(.*\)$/\12.0/g' Cartfile
           echo "after update"
           cat Cartfile
+          carthge update
           git add .
           git commit -m"bump E"
           git push --set-upstream origin chore/bump
@@ -35,4 +36,4 @@ jobs:
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh pr create --title "chore: bu,p" --body "bump for E"
+          gh pr create --title "chore: bump" --body "bump for E"
