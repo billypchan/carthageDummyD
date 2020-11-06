@@ -20,11 +20,19 @@ jobs:
 
       - name: create bump PR
         run: |
+          get_latest_release() {
+            curl --silent "https://api.github.com/repos/$1/releases/latest" | # Get latest release from GitHub api
+            grep '"tag_name":' |                                            # Get tag line
+            sed -E 's/.*"([^"]+)".*/\1/'                                    # Pluck JSON value
+          }
+          
+          LATEST_VERSION=get_latest_release "billypchan/carthageDummyE"
+
           git branch chore/bump
           git checkout chore/bump
           echo "before update"
           cat Cartfile
-          sed -i '' 's/\(github "billypchan\/carthageDummyE" ~> \)\(.*\)$/\12.0/g' Cartfile
+          sed -i '' 's/\(github "billypchan\/carthageDummyE" ~> \)\(.*\)$/\1$LATEST_VERSION/g' Cartfile
           echo "after update"
           cat Cartfile
           carthage update --no-build
