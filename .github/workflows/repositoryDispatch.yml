@@ -28,6 +28,8 @@ jobs:
           
           LATEST_VERSION=get_latest_release "billypchan/carthageDummyE"
 
+          echo "latest version is: $LATEST_VERSION"
+          
           git branch chore/bump
           git checkout chore/bump
           echo "before update"
