@@ -36,7 +36,7 @@ jobs:
           git checkout chore/bump
           echo "before update"
           cat Cartfile
-          sed -i '' 's/\(github "billypchan\/carthageDummyE" ~> \)\(.*\)$/\1$LATEST_VERSION/g' Cartfile
+          sed -i "" "s/\(github \"billypchan\/carthageDummyE\" ~> \)\(.*\)$/\1$LATEST_VERSION/g" Cartfile
           echo "after update"
           cat Cartfile
           carthage update --no-build
