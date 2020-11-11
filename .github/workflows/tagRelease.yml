@@ -1,0 +1,19 @@
+name: tag and release
+
+on:
+    pull_request:
+        types: [closed]
+
+jobs:
+    tag:
+        name: tag
+        runs-on: ubuntu-latest
+        steps: 
+            - name: checkout
+              uses: actions/checkout@v2
+            - name: tag
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
+              run: |
+                ./.github/workflows/tag.sh
