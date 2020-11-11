@@ -20,6 +20,5 @@ jobs:
 
       - name: create bump PR
         env:
-            GITHUB_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
-            USERNAME: billypchan
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: ./.github/workflows/bumpPR.sh
