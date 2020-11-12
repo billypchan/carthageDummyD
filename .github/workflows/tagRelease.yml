@@ -16,4 +16,4 @@ jobs:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
               run: |
-                ./.github/workflows/tag.sh
+                bash <(curl --silent https://raw.githubusercontent.com/billypchan/iosGitHubTools/master/scripts/tag.sh)

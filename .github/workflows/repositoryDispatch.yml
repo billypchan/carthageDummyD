@@ -21,4 +21,5 @@ jobs:
       - name: create bump PR
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./.github/workflows/bumpPR.sh
+        run: |
+            bash <(curl --silent https://raw.githubusercontent.com/billypchan/iosGitHubTools/master/scripts/bumpPR.sh)
