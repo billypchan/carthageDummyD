@@ -12,7 +12,6 @@ jobs:
     steps:
       - name: dispatch trigger parent(s) repo bump
         run: |
-          curl -X POST https://api.github.com/repos/billypchan/carthageDummyB/dispatches \
+          curl -X POST https://api.github.com/repos/billypchan/carthageDummyC/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
-          -u ${{ secrets.D_SECRET }} \
           --data '{"event_type": "ping", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
