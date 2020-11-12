@@ -1,10 +1,8 @@
-name: Remote Dispatch Action Responder
+name: Remote Dispatch
 
 on:
   repository_dispatch:
     types: [ping]
-  push:
-    branches: [ master ]
 
 jobs:
   create-bump-pr:
