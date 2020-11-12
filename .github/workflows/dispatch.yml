@@ -11,6 +11,8 @@ jobs:
 
     steps:
       - name: dispatch trigger parent(s) repo bump
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           curl \
           -X POST \
