@@ -1,0 +1,24 @@
+name: Remote Dispatch
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [ping]
+
+jobs:
+  create-bump-pr:
+    runs-on: macos-10.15
+
+    steps:
+      - name: Event Information
+        run: |
+          echo "Event '${{ github.event.action }}' received from '${{ github.event.client_payload.repository }}'"
+
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: create bump PR
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+            bash <(curl --silent https://raw.githubusercontent.com/billypchan/iosGitHubTools/master/scripts/bumpPR.sh)
