@@ -3,7 +3,7 @@ name: dispatch
 on:
   push:
     branches: [ master ]
-  release:
+  release: [published]
   
 jobs:
   dispatch:
