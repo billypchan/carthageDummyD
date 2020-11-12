@@ -8,7 +8,6 @@ on:
 jobs:
   dispatch:
     runs-on: ubuntu-latest
-
     steps:
       - name: dispatch trigger parent(s) repo bump
         run: |
