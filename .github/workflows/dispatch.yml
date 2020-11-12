@@ -12,14 +12,16 @@ jobs:
       - name: dispatch trigger parent(s) repo bump
         run: |
           curl -X POST https://api.github.com/repos/billypchan/carthageDummyC/dispatches \
-          -H 'Accept: application/vnd.github.everest-preview+json' \
+          -H 'Accept: application/vnd.github.v3+json' \
           -u ${{ secrets.D_SECRET }} \
-          --data '{"event_type": "ping", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
+          -d '{"event_type": "ping", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
+           
           curl -X POST https://api.github.com/repos/billypchan/carthageDummyD/dispatches \
-          -H 'Accept: application/vnd.github.everest-preview+json' \
+          -H 'Accept: application/vnd.github.v3+json' \
           -u ${{ secrets.D_SECRET }} \
-          --data '{"event_type": "ping", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
+          -d '{"event_type": "ping", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
+           
           curl -X POST https://api.github.com/repos/billypchan/carthageDummyB/dispatches \
-          -H 'Accept: application/vnd.github.everest-preview+json' \
+          -H 'Accept: application/vnd.github.v3+json' \
           -u ${{ secrets.D_SECRET }} \
-          --data '{"event_type": "ping", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
+          -d '{"event_type": "ping", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
