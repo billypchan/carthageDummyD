@@ -3,7 +3,8 @@ name: trigger bump
 on:
   push:
     branches: [ master ]
-
+  release:
+  
 jobs:
   dispatch:
     runs-on: ubuntu-latest
